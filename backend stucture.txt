@@ -1,0 +1,39 @@
+monopoly-investment-game-backend/
+├── controllers/                 # Logic for handling requests
+│   ├── authController.js        # User login, registration
+│   ├── investmentController.js  # Investment actions (buy, sell, etc.)
+│   ├── portfolioController.js   # Portfolio management
+│   ├── eventController.js       # Random game events
+│   └── playerController.js      # Player actions
+├── models/                      # Database models (MongoDB)
+│   ├── User.js                  # User model
+│   ├── Investment.js            # Investment model
+│   ├── Portfolio.js             # Portfolio model
+│   ├── Event.js                 # Game event model
+│   └── Game.js                  # Game state model
+├── routes/                      # API routes for game features
+│   ├── authRoutes.js            # Authentication routes
+│   ├── investmentRoutes.js      # Routes for investment actions
+│   ├── portfolioRoutes.js       # Portfolio management routes
+│   ├── eventRoutes.js           # Routes for game events
+│   ├── playerRoutes.js          # Player status and actions
+│   └── gameRoutes.js            # Game state management routes
+├── middlewares/                 # Middlewares (e.g., auth, error handling)
+│   ├── authMiddleware.js        # Authentication check
+│   ├── errorHandler.js          # Global error handler
+│   └── validateRequest.js       # Request validation
+├── utils/                        # Utility functions
+│   ├── gameHelper.js            # Game-related helper functions
+│   ├── investmentHelper.js      # Investment helpers (ROI, etc.)
+│   ├── randomEventHelper.js     # Random event generation
+│   ├── transactionHelper.js     # Transaction helpers (buy, sell)
+│   ├── formatMoney.js           # Money formatting
+│   └── sendEmail.js             # Helper for email notifications
+├── config/                       # Configurations (DB, environment variables)
+│   ├── db.js                    # Database connection setup (MongoDB)
+│   ├── dotenvConfig.js          # Load environment variables
+│   └── gameConfig.js            # Game configuration (rules, limits, etc.)
+├── .env                          # Environment variables (e.g., database URL)
+├── server.js                     # Express server setup and middleware
+├── package.json                  # Project dependencies and scripts
+└── README.md                     # Project documentation
