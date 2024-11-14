@@ -1,0 +1,88 @@
+/* Container for action buttons */
+.action-buttons-container {
+    display: flex; /* Flexbox to arrange the buttons in a row */
+    justify-content: space-around; /* Space out the buttons */
+    align-items: center; /* Vertically center the buttons */
+    margin-top: 20px; /* Add some space on top */
+    width: 100%; /* Full width */
+    max-width: 600px; /* Limit the width for better layout */
+    margin-left: auto; /* Center the buttons */
+    margin-right: auto; /* Center the buttons */
+}
+
+/* General button styles */
+.action-btn {
+    padding: 12px 20px; /* Add padding for comfortable click area */
+    font-size: 16px; /* Set font size */
+    font-weight: bold; /* Make the button text bold */
+    text-transform: uppercase; /* Make the text uppercase */
+    border-radius: 8px; /* Rounded corners */
+    border: 2px solid transparent; /* Default border, which will change on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    margin: 5px; /* Space between the buttons */
+    width: 120px; /* Fixed width to maintain uniformity */
+    background-color: #fff; /* Set background color to white by default */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Button hover effect for enabled buttons */
+.action-btn:hover:enabled {
+    background-color: #f0f0f0; /* Light background on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    border-color: #ccc; /* Add a border color on hover */
+}
+
+/* Disabled button styling */
+.action-btn:disabled {
+    background-color: #ddd; /* Light grey background for disabled state */
+    color: #888; /* Grey text for disabled buttons */
+    cursor: not-allowed; /* Show 'not-allowed' cursor */
+    box-shadow: none; /* Remove shadow for disabled state */
+}
+
+/* Specific styles for each button type */
+.buy-btn {
+    background-color: #4CAF50; /* Green background for Buy */
+    color: white; /* White text color */
+    border: 2px solid #388E3C; /* Darker green border */
+}
+
+.buy-btn:hover:enabled {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.sell-btn {
+    background-color: #f44336; /* Red background for Sell */
+    color: white; /* White text color */
+    border: 2px solid #d32f2f; /* Darker red border */
+}
+
+.sell-btn:hover:enabled {
+    background-color: #e53935; /* Darker red on hover */
+}
+
+.rent-btn {
+    background-color: #2196F3; /* Blue background for Rent */
+    color: white; /* White text color */
+    border: 2px solid #1976D2; /* Darker blue border */
+}
+
+.rent-btn:hover:enabled {
+    background-color: #1976D2; /* Darker blue on hover */
+}
+
+.tax-btn {
+    background-color: #FF9800; /* Orange background for Tax */
+    color: white; /* White text color */
+    border: 2px solid #F57C00; /* Darker orange border */
+}
+
+.tax-btn:hover:enabled {
+    background-color: #F57C00; /* Darker orange on hover */
+}
+
+/* Add some space below the buttons */
+.action-buttons-container button {
+    margin-bottom: 20px;
+}

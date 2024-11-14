@@ -1,0 +1,85 @@
+/* InvestmentChart.css */
+
+/* Container for the entire chart component */
+.investment-chart-container {
+    width: 100%;
+    max-width: 900px; /* Max width for the chart container */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+    text-align: center; /* Center-align the text */
+    overflow: hidden; /* Prevents content from overflowing */
+  }
+  
+  /* Title of the chart */
+  .investment-chart-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333; /* Dark color for the title */
+    margin-bottom: 20px;
+  }
+  
+  /* Loading text */
+  .investment-chart-container p {
+    font-size: 16px;
+    color: #888; /* Gray color for loading text */
+    font-style: italic;
+  }
+  
+  /* Style for the canvas container */
+  .investment-chart-container canvas {
+    width: 100% !important; /* Ensure the chart stretches to 100% width */
+    height: 400px !important; /* Set a fixed height for the chart */
+    max-height: 500px; /* Limit the height on larger screens */
+    margin-top: 20px; /* Space between chart and title */
+    border-radius: 8px; /* Rounded corners for the chart */
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .investment-chart-container {
+      padding: 10px; /* Reduce padding on small screens */
+    }
+  
+    .investment-chart-container h2 {
+      font-size: 20px; /* Reduce font size of the title on small screens */
+    }
+  
+    .investment-chart-container canvas {
+      height: 300px; /* Reduce the height of the chart on smaller screens */
+    }
+  }
+  
+  /* Responsive design for very small screens (mobile) */
+  @media (max-width: 480px) {
+    .investment-chart-container {
+      max-width: 100%; /* Full width for very small screens */
+      padding: 5px; /* Minimal padding */
+    }
+  
+    .investment-chart-container h2 {
+      font-size: 18px; /* Further reduce the title font size */
+    }
+  
+    .investment-chart-container canvas {
+      height: 250px; /* Further reduce the height for mobile */
+    }
+  }
+  
+  /* Adding a hover effect to the chart container */
+  .investment-chart-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
+    transition: all 0.3s ease; /* Smooth transition effect */
+  }
+  
+  /* Styling for tooltips */
+  .chartjs-tooltip {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background for tooltips */
+    color: #fff; /* White text for tooltips */
+    border-radius: 4px; /* Rounded corners for tooltips */
+    padding: 10px;
+    font-size: 14px;
+  }
+  

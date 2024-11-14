@@ -1,0 +1,112 @@
+/* StockInvestment.css */
+
+/* Container for the entire stock investment item */
+.stock-investment-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 15px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header of the stock investment item (stock name and current value) */
+  .stock-investment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .stock-investment-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .stock-investment-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #4caf50; /* Green color for current stock value */
+  }
+  
+  /* Summary of the stock investment */
+  .stock-investment-summary {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .stock-investment-summary p {
+    margin: 5px 0; /* Space between each line */
+  }
+  
+  /* Button to toggle the details view */
+  .details-button {
+    padding: 8px 15px;
+    font-size: 14px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .details-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Investment details section (shown when details are expanded) */
+  .stock-investment-details {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+  }
+  
+  .stock-investment-details p {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+  }
+  
+  .view-button {
+    padding: 8px 15px;
+    font-size: 14px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .view-button:hover {
+    background-color: #1565c0; /* Darker blue on hover */
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .stock-investment-container {
+      padding: 15px; /* Reduce padding on smaller screens */
+    }
+  
+    .stock-investment-title {
+      font-size: 18px; /* Smaller title for mobile */
+    }
+  
+    .stock-investment-value {
+      font-size: 16px; /* Smaller font size for value */
+    }
+  
+    .details-button {
+      font-size: 12px; /* Smaller button text */
+    }
+  
+    .view-button {
+      font-size: 12px; /* Smaller button text */
+    }
+  }
+  

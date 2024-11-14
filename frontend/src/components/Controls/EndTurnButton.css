@@ -1,0 +1,62 @@
+/* Container for the End Turn button */
+.end-turn-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    height: 100%;
+  }
+  
+  /* Styling for the End Turn button */
+  .end-turn-btn {
+    padding: 14px 32px;              /* Adds spacing inside the button */
+    font-size: 18px;                  /* Larger text for readability */
+    font-weight: bold;                /* Makes the text bold */
+    background-color: #4CAF50;        /* Green background */
+    color: white;                     /* White text */
+    border: none;                     /* Removes default border */
+    border-radius: 12px;              /* Rounded corners */
+    cursor: pointer;                  /* Shows a pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    width: 220px;                     /* Fixed width for the button */
+    text-align: center;               /* Centers the text inside the button */
+  }
+  
+  /* Hover effect for the button when it is enabled */
+  .end-turn-btn:hover:enabled {
+    background-color: #45a049;        /* Darker green when hovered */
+    transform: translateY(-3px);      /* Lifts the button slightly on hover */
+  }
+  
+  /* Disabled button styling */
+  .end-turn-btn.disabled {
+    background-color: #c7c7c7;        /* Light grey background when disabled */
+    color: #a6a6a6;                   /* Grey text */
+    cursor: not-allowed;              /* No pointer cursor when disabled */
+    opacity: 0.6;                     /* Slightly faded to show it’s inactive */
+  }
+  
+  /* Disabled button hover effect */
+  .end-turn-btn.disabled:hover {
+    background-color: #c7c7c7;        /* No hover effect on disabled state */
+    transform: none;                  /* No lift effect on disabled state */
+  }
+  
+  /* Styling for the container of the button */
+  .end-turn-button-container:hover {
+    transform: translateY(-4px);       /* Slight lift of the button container */
+  }
+  
+  /* Optional responsive adjustments for smaller screens */
+  @media (max-width: 480px) {
+    .end-turn-btn {
+      padding: 12px 24px;             /* Reduce padding for smaller screens */
+      font-size: 16px;                 /* Smaller font for smaller screens */
+    }
+  
+    .end-turn-button-container {
+      margin-top: 15px;                /* Adjust container margin */
+    }
+  }
+  

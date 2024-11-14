@@ -1,0 +1,111 @@
+/* Container for the whole player actions section */
+.player-actions-container {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Title of the player actions section */
+  .player-actions-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Property selection section */
+  .property-selection {
+    margin-bottom: 20px;
+  }
+  
+  .property-selection h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .property-selection select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box;
+  }
+  
+  .property-selection select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Action buttons section */
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .action-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 48%;
+  }
+  
+  .buy-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+  }
+  
+  .buy-btn:hover {
+    background-color: #218838;
+  }
+  
+  .sell-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+  }
+  
+  .sell-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .end-turn-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 100%;
+  }
+  
+  .end-turn-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive styling for smaller screens */
+  @media (max-width: 600px) {
+    .player-actions-container {
+      padding: 15px;
+      max-width: 100%;
+    }
+  
+    .action-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .action-btn {
+      width: 100%;
+    }
+  }
+  

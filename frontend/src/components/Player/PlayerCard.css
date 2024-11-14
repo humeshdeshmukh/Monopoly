@@ -1,0 +1,94 @@
+/* Styles for the player card component */
+.player-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header section for player's name and money */
+  .player-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .player-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+  }
+  
+  .player-money {
+    font-size: 16px;
+    color: #28a745; /* Green color for money */
+    margin: 0;
+  }
+  
+  /* Section for displaying the player's properties */
+  .player-properties {
+    margin-bottom: 20px;
+  }
+  
+  .player-properties h4 {
+    font-size: 16px;
+    color: #555;
+    margin: 0 0 10px 0;
+  }
+  
+  .property-item {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .no-properties {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  /* Button for viewing details */
+  .player-actions {
+    text-align: center;
+  }
+  
+  .view-details-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-details-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 600px) {
+    .player-card {
+      max-width: 90%;
+      padding: 15px;
+    }
+    
+    .player-name {
+      font-size: 18px;
+    }
+    
+    .player-money {
+      font-size: 14px;
+    }
+    
+    .view-details-btn {
+      width: 100%;
+    }
+  }
+  

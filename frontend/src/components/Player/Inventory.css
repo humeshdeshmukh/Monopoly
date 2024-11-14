@@ -1,0 +1,127 @@
+/* Inventory.css */
+
+/* Container for the inventory section */
+.inventory-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title of the inventory section */
+  .inventory-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* Money section styling */
+  .inventory-money {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for the properties section */
+  .inventory-properties,
+  .inventory-other-items {
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  /* Properties list */
+  .properties-list,
+  .other-items-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .property-item,
+  .other-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .property-info,
+  .item-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .property-name,
+  .item-name {
+    font-weight: 600;
+  }
+  
+  .property-value,
+  .item-quantity {
+    color: #4caf50; /* Green for value/quantity */
+  }
+  
+  .property-actions,
+  .item-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Button styles */
+  .view-details-btn,
+  .use-item-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .view-details-btn:hover,
+  .use-item-btn:hover {
+    background-color: #1565c0;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .inventory-container {
+      padding: 15px;
+    }
+  
+    .inventory-title {
+      font-size: 20px;
+    }
+  
+    .properties-list,
+    .other-items-list {
+      padding-left: 20px;
+    }
+  
+    .property-item,
+    .other-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .property-actions,
+    .item-actions {
+      justify-content: flex-start;
+    }
+  }
+  

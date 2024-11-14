@@ -1,0 +1,125 @@
+/* InvestmentList.css */
+
+/* Container for the entire investment list */
+.investment-list-container {
+    width: 100%;
+    max-width: 1000px; /* Limit max width for readability */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  /* Title for the investment list */
+  .investment-list-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center; /* Center-align the title */
+  }
+  
+  /* Style for the investment list */
+  .investment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between each investment item */
+  }
+  
+  /* Style for each investment item */
+  .investment-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* Indicates that the item is clickable */
+    transition: transform 0.3s ease-in-out; /* Smooth hover transition */
+  }
+  
+  .investment-item:hover {
+    transform: translateY(-5px); /* Hover effect: moves the item up slightly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+  }
+  
+  /* Style for the investment header (date and value) */
+  .investment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .investment-date {
+    font-size: 16px;
+    color: #555;
+    font-weight: 500;
+  }
+  
+  .investment-value {
+    font-size: 18px;
+    color: #4caf50; /* Green color for the value */
+    font-weight: 600;
+  }
+  
+  /* Style for the investment summary (type and description) */
+  .investment-summary {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .investment-summary p {
+    margin: 5px 0; /* Add margin between lines for readability */
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .investment-list-container {
+      padding: 15px; /* Reduce padding on smaller screens */
+    }
+  
+    .investment-list-container h2 {
+      font-size: 20px; /* Smaller title for smaller screens */
+    }
+  
+    .investment-item {
+      padding: 15px; /* Less padding for mobile */
+    }
+  
+    .investment-header {
+      flex-direction: column; /* Stack the header vertically on small screens */
+      gap: 10px; /* Add gap between date and value */
+    }
+  
+    .investment-value {
+      font-size: 16px; /* Smaller font size for value */
+    }
+  
+    .investment-summary {
+      font-size: 12px; /* Smaller text for descriptions */
+    }
+  }
+  
+  /* Mobile screen styles */
+  @media (max-width: 480px) {
+    .investment-list-container {
+      padding: 10px; /* Minimal padding on mobile */
+    }
+  
+    .investment-item {
+      padding: 12px; /* Further reduce padding on mobile */
+    }
+  
+    .investment-date {
+      font-size: 14px; /* Smaller font size for date */
+    }
+  
+    .investment-value {
+      font-size: 14px; /* Smaller font size for value */
+    }
+  
+    .investment-summary {
+      font-size: 10px; /* Further reduce font size for summaries */
+    }
+  }
+  

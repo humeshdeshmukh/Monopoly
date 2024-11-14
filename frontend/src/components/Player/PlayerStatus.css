@@ -1,0 +1,74 @@
+/* Styles for the player status component */
+.player-status {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 350px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header for the player status section */
+  .status-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* Container for the player's status info */
+  .status-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Each piece of information (name, money, properties, etc.) */
+  .info-item {
+    margin-bottom: 15px;
+  }
+  
+  .info-item h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    margin: 0;
+  }
+  
+  .info-item p {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+  }
+  
+  .info-item ul {
+    padding-left: 20px;
+  }
+  
+  .info-item li {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 600px) {
+    .player-status {
+      max-width: 90%;
+      padding: 15px;
+    }
+  
+    .status-header {
+      font-size: 22px;
+    }
+  
+    .info-item h3 {
+      font-size: 14px;
+    }
+  
+    .info-item p,
+    .info-item li {
+      font-size: 12px;
+    }
+  }
+  

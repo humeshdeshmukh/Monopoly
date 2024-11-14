@@ -1,0 +1,80 @@
+/* Styles for the PortfolioItem component */
+.portfolio-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+    font-family: Arial, sans-serif;
+  }
+  
+  .portfolio-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .portfolio-item-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .portfolio-item-value {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  .portfolio-item-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .btn {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .view-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .view-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .remove-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .remove-btn:hover {
+    background-color: #c82333;
+  }
+  
+  /* Responsive Design for smaller screens */
+  @media (max-width: 600px) {
+    .portfolio-item {
+      padding: 15px;
+      margin: 10px 0;
+    }
+  
+    .portfolio-item-name {
+      font-size: 16px;
+    }
+  
+    .portfolio-item-value {
+      font-size: 14px;
+    }
+  
+    .btn {
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+  }
+  

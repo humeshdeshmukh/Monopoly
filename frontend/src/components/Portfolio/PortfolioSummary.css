@@ -1,0 +1,77 @@
+/* PortfolioSummary.css */
+
+/* Container for the entire portfolio summary section */
+.portfolio-summary {
+    background-color: #f9f9f9; /* Light background for the section */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for the container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow for a card-like effect */
+    max-width: 600px; /* Maximum width for the portfolio summary */
+    margin: 30px auto; /* Center it horizontally */
+    font-family: 'Arial', sans-serif; /* Clean, modern font */
+  }
+  
+  /* Heading styling */
+  .portfolio-summary h2 {
+    color: #0073e6; /* Blue color for the title */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center; /* Center the title */
+  }
+  
+  /* Details section for portfolio information */
+  .portfolio-details {
+    font-size: 1.2rem;
+    color: #333; /* Dark grey for the text */
+  }
+  
+  /* Style for each individual property detail line */
+  .portfolio-details p {
+    margin: 10px 0; /* Space between each detail line */
+  }
+  
+  /* Actions section for buttons or further interactions */
+  .portfolio-details .actions {
+    text-align: center;
+    margin-top: 20px; /* Add some space above the button */
+  }
+  
+  /* Button styling */
+  .portfolio-details .actions button {
+    background-color: #0073e6; /* Blue background */
+    color: white; /* White text */
+    border: none;
+    padding: 12px 25px; /* Padding for a comfortable button size */
+    font-size: 1.1rem; /* Slightly larger text for the button */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Change cursor to indicate clickable item */
+    transition: all 0.3s ease; /* Smooth transition for interactive effects */
+  }
+  
+  /* Hover effect for the button */
+  .portfolio-details .actions button:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+  }
+  
+  /* Active effect for the button */
+  .portfolio-details .actions button:active {
+    transform: translateY(0); /* Return button to normal position on click */
+  }
+  
+  /* Mobile responsiveness: Stack details and button */
+  @media (max-width: 600px) {
+    .portfolio-summary {
+      padding: 15px;
+    }
+  
+    .portfolio-details p {
+      font-size: 1rem; /* Smaller font size for mobile */
+    }
+  
+    .portfolio-details .actions button {
+      padding: 10px 20px; /* Smaller padding on smaller screens */
+      font-size: 1rem; /* Adjust font size on mobile */
+    }
+  }
+  

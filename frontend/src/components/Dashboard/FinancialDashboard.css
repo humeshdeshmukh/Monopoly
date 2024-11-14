@@ -1,0 +1,107 @@
+/* FinancialDashboard.css */
+
+/* Container for the entire dashboard */
+.financial-dashboard {
+    background-color: #f4f7fb;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Header styling */
+  .dashboard-header {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 40px;
+  }
+  
+  /* Section for financial info cards */
+  .financial-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  /* Styling individual financial info cards */
+  .financial-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+  }
+  
+  .financial-card h3 {
+    font-size: 1.25rem;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  
+  .financial-amount {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #2f855a; /* greenish color for positive balance */
+  }
+  
+  /* Add special colors for Assets and Liabilities */
+  .financial-card:nth-child(2) .financial-amount {
+    color: #3182ce; /* blue for assets */
+  }
+  
+  .financial-card:nth-child(3) .financial-amount {
+    color: #e53e3e; /* red for liabilities */
+  }
+  
+  /* Chart section styling */
+  .financial-chart {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .financial-chart h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive Design: Adjust layout for smaller screens */
+  @media (max-width: 768px) {
+    .financial-info {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .financial-card {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .dashboard-header {
+      font-size: 2rem;
+    }
+  
+    .financial-info {
+      flex-direction: column;
+    }
+  
+    .financial-card h3 {
+      font-size: 1.125rem;
+    }
+  
+    .financial-amount {
+      font-size: 1.5rem;
+    }
+  }
+  

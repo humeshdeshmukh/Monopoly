@@ -1,0 +1,69 @@
+/* Tooltip.css */
+
+/* The container that wraps the target element and the tooltip */
+.tooltip-container {
+    position: relative; /* Needed for positioning the tooltip relative to this container */
+    display: inline-block; /* Ensures the tooltip is inline with the target element */
+  }
+  
+  /* Tooltip box styles */
+  .tooltip {
+    position: absolute; /* Positions the tooltip relative to the container */
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    font-size: 0.875rem; /* Slightly smaller font */
+    border-radius: 4px; /* Rounded corners */
+    font-weight: 500; /* Medium weight for text */
+    visibility: hidden; /* Initially hide the tooltip */
+    opacity: 0; /* Make the tooltip invisible by default */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade-in effect */
+    z-index: 1000; /* Make sure the tooltip is on top of other elements */
+    pointer-events: none; /* Prevent the tooltip from interfering with mouse events */
+  }
+  
+  /* Tooltip position styles */
+  .tooltip.top {
+    bottom: 100%; /* Position the tooltip above the target element */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Adjust the position for centering */
+    margin-bottom: 8px; /* Space between the tooltip and the element */
+  }
+  
+  .tooltip.right {
+    top: 50%; /* Position the tooltip to the right of the target element */
+    left: 100%; /* Align with the right edge of the element */
+    transform: translateY(-50%); /* Center it vertically */
+    margin-left: 8px; /* Space between the tooltip and the element */
+  }
+  
+  .tooltip.bottom {
+    top: 100%; /* Position the tooltip below the target element */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Adjust the position for centering */
+    margin-top: 8px; /* Space between the tooltip and the element */
+  }
+  
+  .tooltip.left {
+    top: 50%; /* Position the tooltip to the left of the target element */
+    right: 100%; /* Align with the left edge of the element */
+    transform: translateY(-50%); /* Center it vertically */
+    margin-right: 8px; /* Space between the tooltip and the element */
+  }
+  
+  /* Tooltip text styling */
+  .tooltip-text {
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap; /* Prevent text from wrapping */
+    max-width: 200px; /* Limit the width to avoid overflow */
+    text-overflow: ellipsis; /* Show ellipsis for long text */
+    overflow: hidden; /* Hide overflowed text */
+  }
+  
+  /* Show tooltip on hover */
+  .tooltip-container:hover .tooltip {
+    visibility: visible; /* Make the tooltip visible */
+    opacity: 1; /* Fade the tooltip in */
+  }
+  

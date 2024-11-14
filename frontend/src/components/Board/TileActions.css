@@ -1,0 +1,162 @@
+/* TileActions.css */
+.tile-actions {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+}
+
+.tile-actions button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tile-actions button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.tile-actions button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Modal Header */
+.modal h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Modal Content */
+.modal p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Action Button Styles inside Modal */
+.modal button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.modal button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.modal button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Additional Styles for Tax, Rent, and Auction */
+.tile-actions .modal .auction-button {
+    background-color: #ffc107;
+    color: white;
+}
+
+.tile-actions .modal .auction-button:hover {
+    background-color: #e0a800;
+}
+
+/* Handling Modal Close Button */
+.modal .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+}
+
+.modal .close-button:hover {
+    color: #333;
+}
+
+/* Additional styling for each tile type */
+.tile-actions .property-tile {
+    color: #007bff;
+}
+
+.tile-actions .tax-tile {
+    color: #dc3545;
+}
+
+.tile-actions .event-tile {
+    color: #28a745;
+}
+
+.tile-actions .rent-tile {
+    color: #17a2b8;
+}
+
+.tile-actions .auction-tile {
+    color: #ffc107;
+}
+
+/* Styling for the Tile Details Modal */
+.tile-actions .modal-content {
+    margin-bottom: 20px;
+}
+
+/* Error messages or notifications in modal */
+.modal .error-message {
+    color: #dc3545;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Make the modal responsive */
+@media (max-width: 600px) {
+    .modal {
+        padding: 15px;
+    }
+
+    .tile-actions button {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px;
+    }
+}

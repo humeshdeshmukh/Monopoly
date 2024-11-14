@@ -1,0 +1,180 @@
+/* File Path: D:\my programs\Monopoly game\frontend\src\components\Board\styles\Board.css */
+
+/* Basic styling for the board container */
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .board-title {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Grid layout for the board tiles */
+  .board-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  /* Styling for individual tiles */
+  .board-tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .board-tile:hover {
+    background-color: #45a049;
+  }
+  
+  .board-tile.active {
+    background-color: #ffeb3b;
+    color: #333;
+  }
+  
+  /* Player information section */
+  .player-info {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .player-info h3 {
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .player-info p {
+    font-size: 1.1em;
+    color: #555;
+  }
+  
+  .end-turn-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #e91e63;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .end-turn-btn:hover {
+    background-color: #d81b60;
+  }
+  
+  /* Tile action section styling */
+  .tile-actions {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .tile-actions button {
+    padding: 8px 16px;
+    margin: 5px 0;
+    background-color: #2196f3;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .tile-actions button:hover {
+    background-color: #1976d2;
+  }
+  
+  /* Modal for tile details */
+  .tile-details-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  .tile-details-modal h4 {
+    font-size: 1.6em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .tile-details-modal p {
+    font-size: 1.1em;
+    color: #666;
+  }
+  
+  .tile-details-modal button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .tile-details-modal button:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Overlay behind the modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
+  
