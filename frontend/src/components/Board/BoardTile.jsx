@@ -1,108 +1,78 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';  // Updated import
 import { GameContext } from '../../context/GameContext';
 import { PlayerContext } from '../../context/PlayerContext';
-// eslint-disable-next-line no-unused-vars
-import { TileActions } from './TileActions';  // For specific tile interactions (like buying/selling)
+import { usePortfolio } from '../../context/PortfolioContext';  // Correct import of the custom hook
+import TileActions from './TileActions';  // For specific tile interactions (like buying/selling)
 import { formatMoney } from '../../utils/formatMoney';
-import { Modal } from '../UI/Modal';
+import Modal from '../UI/Modal';
 import './BoardTile.css';
 
-/**
- * BoardTile component - represents a single tile on the board.
- * Handles various tile types and their interactions, such as property purchases, investments, taxes, etc.
- */
-// eslint-disable-next-line no-unused-vars
 const BoardTile = ({ tile, index }) => {
     const { gameState, setGameState } = useContext(GameContext);
     const { playerState, updatePlayerState } = useContext(PlayerContext);
+    const { portfolio, addProperty, removeProperty, getTotalPropertyValue } = usePortfolio();  // Access portfolio context
     const [showModal, setShowModal] = useState(false);
-    // eslint-disable-next-line no-unused-vars
     const [tileDetails, setTileDetails] = useState(null);
     const [actionInProgress, setActionInProgress] = useState(false);  // Prevent multiple actions at once
-    const history = useHistory();
+    const navigate = useNavigate();  // Initialize navigate
 
-    // Effect to handle changes to gameState, such as property ownership
     useEffect(() => {
         if (gameState?.action === 'buy' && gameState.tileId === tile.id) {
-            // Perform any necessary state updates, animations, or UI changes after a buy action
             updatePlayerState({ type: 'updateOwnership', tileId: tile.id });
         }
     }, [gameState, tile.id, updatePlayerState]);
 
-    /**
-     * Handles the click on a tile, triggering an action or displaying detailed information.
-     */
     const handleTileClick = () => {
         if (actionInProgress) return; // Prevent multiple clicks while action is in progress
 
         if (tile.type === 'investment') {
-            // If the tile is an investment type, show investment details
             setTileDetails(tile);
             setShowModal(true);
         } else if (tile.type === 'property') {
-            // For property-related tiles, navigate to the property page or details
-            history.push(`/property/${tile.id}`);
+            navigate(`/property/${tile.id}`);  // Using navigate instead of history.push
         } else if (tile.type === 'event') {
-            // For event-related tiles, handle special event logic
             handleEventTile();
         } else if (tile.type === 'tax') {
-            // For tax tiles, deduct money from player's balance
             handleTaxTile();
         }
-        // You can add other tile types and actions (like "chance", "community chest", etc.)
     };
 
-    /**
-     * Handles tax-related tiles, deducting the required amount from player's balance.
-     */
     const handleTaxTile = () => {
         const taxAmount = tile.value || 0;
         if (playerState.balance >= taxAmount) {
             updatePlayerState({ type: 'deduct', amount: taxAmount });
             setGameState({ type: 'tax', tileId: tile.id });
         } else {
-            // Show warning or notification about insufficient funds
             alert('You do not have enough balance to pay the tax.');
         }
     };
 
-    /**
-     * Handles event tiles (e.g., random events that affect the game state).
-     */
     const handleEventTile = () => {
-        // Example: Handle a special event like a random bonus or deduction
         const eventOutcome = Math.random() > 0.5 ? 'bonus' : 'penalty';
         if (eventOutcome === 'bonus') {
-            const bonus = Math.floor(Math.random() * 500) + 100; // Random bonus between 100 and 500
+            const bonus = Math.floor(Math.random() * 500) + 100;
             updatePlayerState({ type: 'add', amount: bonus });
             setGameState({ type: 'event', action: 'bonus', tileId: tile.id });
         } else {
-            const penalty = Math.floor(Math.random() * 300) + 50; // Random penalty between 50 and 300
+            const penalty = Math.floor(Math.random() * 300) + 50;
             updatePlayerState({ type: 'deduct', amount: penalty });
             setGameState({ type: 'event', action: 'penalty', tileId: tile.id });
         }
     };
 
-    /**
-     * Closes the modal that displays tile details.
-     */
     const closeModal = () => {
         setShowModal(false);
         setTileDetails(null);
     };
 
-    /**
-     * Handles the player's action on an investment tile (e.g., buying a stock or property).
-     */
     const handleInvestmentAction = (actionType) => {
-        if (actionInProgress) return; // Prevent multiple actions at once
+        if (actionInProgress) return;
 
         setActionInProgress(true);
         if (actionType === 'buy') {
-            // Validate purchase (ensure player has enough money)
             if (playerState.balance >= tile.value) {
                 updatePlayerState({ type: 'buy', investment: tile });
                 setGameState({ type: 'update', action: 'buy', tileId: tile.id });
@@ -110,10 +80,9 @@ const BoardTile = ({ tile, index }) => {
                 alert('Insufficient funds to buy this investment!');
             }
         } else if (actionType === 'sell') {
-            // Selling logic (e.g., selling a property or investment)
             alert('Selling feature not implemented yet.');
         }
-        setActionInProgress(false); // End action and close modal
+        setActionInProgress(false);
         setShowModal(false);
     };
 
@@ -144,7 +113,6 @@ const BoardTile = ({ tile, index }) => {
                 )}
             </div>
 
-            {/* Modal for displaying tile details */}
             {showModal && (
                 <Modal onClose={closeModal} title={`${tile.name} Details`}>
                     <div className="tile-modal-content">

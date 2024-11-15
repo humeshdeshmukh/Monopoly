@@ -1,24 +1,32 @@
 import React, { createContext, useState, useContext } from 'react';
-import PropTypes from 'prop-types';  
+import PropTypes from 'prop-types';
 import { buyProperty } from '../utils/gameUtils';  // Import the buyProperty function
 
 const GameContext = createContext();
 
-export const useGame = () => useContext(GameContext);
+export const useGame = () => useContext(GameContext);  // Custom hook for consuming the context
 
 export const GameProvider = ({ children }) => {
   const [players, setPlayers] = useState([
-    { id: 1, name: 'Player 1', properties: [], balance: 1500 },
-    { id: 2, name: 'Player 2', properties: [], balance: 1500 },
+    { id: 1, name: 'Player 1', properties: [], balance: 1500, position: 0 },
+    { id: 2, name: 'Player 2', properties: [], balance: 1500, position: 0 },
   ]);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
   const [gameBoard, setGameBoard] = useState([
     { name: 'Start', value: 0, owner: null },
     { name: 'Mediterranean Avenue', value: 60, owner: null },
     { name: 'Community Chest', value: 0, owner: null },
+    // Add more tiles here
   ]);
   const [gameStatus, setGameStatus] = useState('Not Started');
   const [diceRoll, setDiceRoll] = useState([0, 0]);
+
+  // Function to get the current tile based on the current player's position
+  const getCurrentTile = () => {
+    const currentPlayer = players[currentPlayerIndex];
+    const currentPosition = currentPlayer.position || 0;
+    return gameBoard[currentPosition];
+  };
 
   const rollDice = () => {
     const roll1 = Math.floor(Math.random() * 6) + 1;
@@ -43,8 +51,8 @@ export const GameProvider = ({ children }) => {
 
   const startNewGame = () => {
     setPlayers([
-      { id: 1, name: 'Player 1', properties: [], balance: 1500 },
-      { id: 2, name: 'Player 2', properties: [], balance: 1500 },
+      { id: 1, name: 'Player 1', properties: [], balance: 1500, position: 0 },
+      { id: 2, name: 'Player 2', properties: [], balance: 1500, position: 0 },
     ]);
     setCurrentPlayerIndex(0);
     setGameBoard([
@@ -54,7 +62,6 @@ export const GameProvider = ({ children }) => {
     setGameStatus('In Progress');
   };
 
-  // Use the buyProperty function from gameUtils
   const handleBuyProperty = (propertyIndex) => {
     const currentPlayer = players[currentPlayerIndex];
     buyProperty(propertyIndex, currentPlayer, gameBoard, players, setPlayers, setGameBoard);
@@ -71,7 +78,8 @@ export const GameProvider = ({ children }) => {
         rollDice,
         endTurn,
         startNewGame,
-        handleBuyProperty, // Pass the handler to the context
+        handleBuyProperty,
+        getCurrentTile, // Provide getCurrentTile to the context
       }}
     >
       {children}
@@ -82,3 +90,5 @@ export const GameProvider = ({ children }) => {
 GameProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export { GameContext }; // Explicitly export GameContext

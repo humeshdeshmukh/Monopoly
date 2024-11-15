@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import './App.css';
 
 // Importing components
@@ -12,38 +12,83 @@ import InvestmentChart from './components/Investment/InvestmentChart';
 import PlayerCard from './components/Player/PlayerCard';
 import Modal from './components/UI/Modal';
 
+// Reducer function for managing the game state
+const gameReducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_PLAYER':
+      return { ...state, currentPlayer: action.payload };
+    case 'ROLL_DICE':
+      return { ...state, diceRollResult: action.payload };
+    case 'TOGGLE_MODAL':
+      return { ...state, openModal: action.payload };
+    case 'SELECT_TILE':
+      return { ...state, selectedTile: action.payload, openModal: true };
+    case 'END_TURN':
+      return {
+        ...state,
+        currentPlayer: state.currentPlayer.name === 'Player 1' ? { name: 'Player 2', assets: state.currentPlayer.assets, liabilities: state.currentPlayer.liabilities } : { name: 'Player 1', assets: state.currentPlayer.assets, liabilities: state.currentPlayer.liabilities },
+        isTurnEnded: true
+      };
+    case 'UPDATE_ASSETS':
+      return { ...state, currentPlayer: { ...state.currentPlayer, assets: action.payload } };
+    case 'UPDATE_LIABILITIES':
+      return { ...state, currentPlayer: { ...state.currentPlayer, liabilities: action.payload } };
+    default:
+      return state;
+  }
+};
+
 function App() {
-  // State management
-  const [currentPlayer, setCurrentPlayer] = useState(null);
-  const [diceRollResult, setDiceRollResult] = useState(null);
-  const [events, setEvents] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
-  const [selectedTile, setSelectedTile] = useState(null);
+  // UseReducer for complex state management
+  const [state, dispatch] = useReducer(gameReducer, {
+    currentPlayer: { name: 'Player 1', assets: [], liabilities: [] },
+    diceRollResult: null,
+    events: [],
+    openModal: false,
+    selectedTile: null,
+    isTurnEnded: false,
+    investmentData: [],
+  });
 
   // Simulate fetching data
   useEffect(() => {
-    // Simulate fetching events data (can replace with API calls)
-    setEvents([
-      { id: 1, title: 'Tax Day', description: 'Pay your taxes!' },
-      { id: 2, title: 'Invest in Property', description: 'Buy a new property.' },
-    ]);
+    setTimeout(() => {
+      dispatch({ type: 'SET_EVENTS', payload: [{ id: 1, title: 'Tax Day', description: 'Pay your taxes!' }, { id: 2, title: 'Invest in Property', description: 'Buy a new property.' }] });
+      dispatch({ type: 'SET_INVESTMENT_DATA', payload: [{ year: 2020, investment: 1000 }, { year: 2021, investment: 1500 }, { year: 2022, investment: 2000 }] });
+    }, 1000);
   }, []);
 
   // Function to handle dice roll
   const rollDice = () => {
     const roll = Math.floor(Math.random() * 6) + 1;
-    setDiceRollResult(roll);
+    dispatch({ type: 'ROLL_DICE', payload: roll });
   };
 
   // Function to handle tile selection
   const handleTileSelection = (tile) => {
-    setSelectedTile(tile);
-    setOpenModal(true); // Open modal with tile details
+    dispatch({ type: 'SELECT_TILE', payload: tile });
   };
 
   // Function to handle turn ending
   const endTurn = () => {
-    setCurrentPlayer((prev) => (prev === 'Player 1' ? 'Player 2' : 'Player 1'));
+    dispatch({ type: 'END_TURN' });
+  };
+
+  // Action Handlers
+  const handleBuy = () => {
+    console.log("Buying...");
+  };
+
+  const handleSell = () => {
+    console.log("Selling...");
+  };
+
+  const handlePayRent = () => {
+    console.log("Paying rent...");
+  };
+
+  const handlePayTax = () => {
+    console.log("Paying tax...");
   };
 
   return (
@@ -51,7 +96,8 @@ function App() {
       {/* Game Header */}
       <header>
         <h1>Monopoly Game</h1>
-        <p>Current Player: {currentPlayer || 'Player 1'}</p>
+        <p>Current Player: {state.currentPlayer.name}</p>
+        {state.diceRollResult && <p>Dice Roll: {state.diceRollResult}</p>}
       </header>
 
       {/* Game Board */}
@@ -59,28 +105,35 @@ function App() {
 
       {/* Game Controls */}
       <div className="controls">
-        <DiceRoll rollDice={rollDice} />
-        <ActionButtons />
-        <EndTurnButton endTurn={endTurn} />
+        <DiceRoll onRoll={rollDice} currentPlayer={state.currentPlayer} />
+        <ActionButtons
+          onBuy={handleBuy}
+          onSell={handleSell}
+          onPayRent={handlePayRent}
+          onPayTax={handlePayTax}
+          tile={state.selectedTile}
+          currentPlayer={state.currentPlayer}
+        />
+        <EndTurnButton onEndTurn={endTurn} currentPlayer={state.currentPlayer} isTurnEnded={state.isTurnEnded} />
       </div>
 
       {/* Player Dashboard */}
       <div className="dashboard">
-        <PlayerCard player={currentPlayer} />
-        <FinancialDashboard />
-        <InvestmentChart />
+        <PlayerCard player={state.currentPlayer} />
+        <FinancialDashboard currentPlayer={state.currentPlayer} assets={state.currentPlayer.assets} liabilities={state.currentPlayer.liabilities} />
+        <InvestmentChart investmentData={state.investmentData} />
       </div>
 
       {/* Events */}
       <div className="events">
-        <EventList events={events} />
+        <EventList events={state.events} />
       </div>
 
       {/* Tile Details Modal */}
-      {openModal && (
-        <Modal onClose={() => setOpenModal(false)}>
+      {state.openModal && (
+        <Modal onClose={() => dispatch({ type: 'TOGGLE_MODAL', payload: false })}>
           <h2>Tile Details</h2>
-          <p>{selectedTile ? selectedTile.details : 'No details available.'}</p>
+          <p>{state.selectedTile ? state.selectedTile.details : 'No details available.'}</p>
         </Modal>
       )}
     </div>

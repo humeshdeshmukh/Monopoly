@@ -15,7 +15,7 @@ export const PlayerProvider = ({ children }) => {
     { id: 1, name: 'Player 1', properties: [], cash: 1500, position: 0 },
     { id: 2, name: 'Player 2', properties: [], cash: 1500, position: 0 },
   ]);
-  
+
   // Function to update the current player's cash
   const updateCash = (playerId, amount) => {
     setPlayers((prevPlayers) => 
@@ -96,3 +96,6 @@ export const PlayerProvider = ({ children }) => {
 PlayerProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+// Explicitly export PlayerContext to be used in other components
+export { PlayerContext };

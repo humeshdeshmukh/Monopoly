@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
@@ -9,7 +8,6 @@ import './FinancialDashboard.css';
 ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement);
 
 const FinancialDashboard = ({ currentPlayer, assets, liabilities }) => {
-  // State to hold financial data for chart and other components
   const [financialData, setFinancialData] = useState({
     balanceHistory: [currentPlayer.balance],
     assetHistory: [assets],
@@ -18,12 +16,11 @@ const FinancialDashboard = ({ currentPlayer, assets, liabilities }) => {
 
   // Effect to simulate or update financial data (could be replaced with actual API calls)
   useEffect(() => {
-    // Simulating financial data updates over time for demo purposes
     const interval = setInterval(() => {
       setFinancialData(prevData => {
-        const newBalance = prevData.balanceHistory[prevData.balanceHistory.length - 1] + (Math.random() * 200 - 100); // Random change to balance
-        const newAssets = prevData.assetHistory[prevData.assetHistory.length - 1] + (Math.random() * 100 - 50); // Random asset growth
-        const newLiabilities = prevData.liabilityHistory[prevData.liabilityHistory.length - 1] - (Math.random() * 50); // Liability reduction
+        const newBalance = prevData.balanceHistory[prevData.balanceHistory.length - 1] + (Math.random() * 200 - 100);
+        const newAssets = prevData.assetHistory[prevData.assetHistory.length - 1] + (Math.random() * 100 - 50);
+        const newLiabilities = prevData.liabilityHistory[prevData.liabilityHistory.length - 1] - (Math.random() * 50);
 
         return {
           balanceHistory: [...prevData.balanceHistory, newBalance],
@@ -31,12 +28,15 @@ const FinancialDashboard = ({ currentPlayer, assets, liabilities }) => {
           liabilityHistory: [...prevData.liabilityHistory, newLiabilities],
         };
       });
-    }, 5000); // Update every 5 seconds
+    }, 5000);
 
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
+    return () => clearInterval(interval);
   }, []);
 
-  // Chart.js data setup
+  const formatCurrency = (value) => {
+    return value !== undefined && value !== null && !isNaN(value) ? `$${value.toFixed(2)}` : '$0.00';
+  };
+
   const chartData = {
     labels: Array.from({ length: financialData.balanceHistory.length }, (_, i) => `Turn ${i + 1}`),
     datasets: [
@@ -71,62 +71,58 @@ const FinancialDashboard = ({ currentPlayer, assets, liabilities }) => {
     <div className="financial-dashboard">
       <h2 className="dashboard-header">Financial Dashboard</h2>
       <div className="financial-info">
-        {/* Player's Current Balance */}
         <div className="financial-card">
           <h3>Balance</h3>
-          <p className="financial-amount">${currentPlayer.balance.toFixed(2)}</p>
+          <p className="financial-amount">{formatCurrency(currentPlayer.balance)}</p>
         </div>
-
-        {/* Player's Assets */}
         <div className="financial-card">
           <h3>Assets</h3>
-          <p className="financial-amount">${assets.toFixed(2)}</p>
+          <p className="financial-amount">{formatCurrency(assets)}</p>
         </div>
-
-        {/* Player's Liabilities */}
         <div className="financial-card">
           <h3>Liabilities</h3>
-          <p className="financial-amount">${liabilities.toFixed(2)}</p>
+          <p className="financial-amount">{formatCurrency(liabilities)}</p>
         </div>
       </div>
 
-      {/* Chart Section for Financial Visualization */}
       <div className="financial-chart">
         <h3>Financial Overview</h3>
-        <Line data={chartData} options={{
-          responsive: true,
-          plugins: {
-            title: {
-              display: true,
-              text: 'Financial Performance Over Time',
-            },
-            tooltip: {
-              mode: 'index',
-              intersect: false,
-            },
-          },
-          scales: {
-            x: {
+        <Line 
+          data={chartData} 
+          options={{
+            responsive: true,
+            plugins: {
               title: {
                 display: true,
-                text: 'Turns',
+                text: 'Financial Performance Over Time',
+              },
+              tooltip: {
+                mode: 'index',
+                intersect: false,
               },
             },
-            y: {
-              title: {
-                display: true,
-                text: 'Amount ($)',
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Turns',
+                },
               },
-              beginAtZero: true,
+              y: {
+                title: {
+                  display: true,
+                  text: 'Amount ($)',
+                },
+                beginAtZero: true,
+              },
             },
-          },
-        }} />
+          }} 
+        />
       </div>
     </div>
   );
 };
 
-// PropTypes for validation
 FinancialDashboard.propTypes = {
   currentPlayer: PropTypes.shape({
     name: PropTypes.string.isRequired,

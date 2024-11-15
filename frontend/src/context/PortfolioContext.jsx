@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+// src/context/PortfolioContext.jsx
 import React, { createContext, useState, useContext } from 'react';
 import PropTypes from 'prop-types';  // Import PropTypes for validation
 
@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';  // Import PropTypes for validation
 const PortfolioContext = createContext();
 
 // A custom hook to use the PortfolioContext
-export const usePortfolio = () => useContext(PortfolioContext);
+const usePortfolio = () => useContext(PortfolioContext);
 
 // A provider component to wrap your app and provide portfolio state
-export const PortfolioProvider = ({ children }) => {
+const PortfolioProvider = ({ children }) => {
   // Initial portfolio state (stores properties owned by players)
   const [portfolio, setPortfolio] = useState([
     { playerId: 1, properties: [] },  // Player 1's portfolio
@@ -74,3 +74,6 @@ export const PortfolioProvider = ({ children }) => {
 PortfolioProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+// Export PortfolioContext, PortfolioProvider, and usePortfolio hook
+export { PortfolioContext, PortfolioProvider, usePortfolio };

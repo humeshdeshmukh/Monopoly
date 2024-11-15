@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import './PlayerCard.css'; // Import the corresponding CSS file for styling
 
 const PlayerCard = ({ player }) => {
+  // Safe check for player and properties existence
+  const properties = player?.properties || [];  // Defaults to empty array if undefined or null
+
   return (
     <div className="player-card">
       <div className="player-card-header">
@@ -14,8 +17,8 @@ const PlayerCard = ({ player }) => {
       <div className="player-properties">
         <h4>Properties:</h4>
         <ul>
-          {player.properties.length > 0 ? (
-            player.properties.map((property, index) => (
+          {properties.length > 0 ? (
+            properties.map((property, index) => (
               <li key={index} className="property-item">
                 {property.name} - ${property.value}
               </li>

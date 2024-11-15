@@ -1,6 +1,3 @@
-// File Path: D:\my programs\Monopoly game\frontend\src\components\Board\Board.jsx
-
-// eslint-disable-next-line no-unused-vars
 import React, { useContext, useEffect, useState } from 'react';
 import BoardTile from './BoardTile';
 import TileActions from './TileActions';
@@ -12,22 +9,24 @@ import './styles/Board.css';
 
 const Board = () => {
   // eslint-disable-next-line no-unused-vars
-  const { tiles, currentPlayer, movePlayer, endTurn, setTileDetails, getCurrentTile } = useContext(GameContext);
-  const { addInvestment } = useContext(PortfolioContext);
-  const { playerStatus, updatePlayerStatus } = useContext(PlayerContext);
+  const { tiles = [], currentPlayer = {}, movePlayer, endTurn, setTileDetails, getCurrentTile } = useContext(GameContext) || {};
+  const { addInvestment } = useContext(PortfolioContext) || {};
+  const { playerStatus = { balance: 0, netWorth: 0 }, updatePlayerStatus } = useContext(PlayerContext) || {};
   
-  const [selectedTile, setSelectedTile] = useState(null); // State for currently selected tile
-  const [showModal, setShowModal] = useState(false); // State for modal visibility
+  const [selectedTile, setSelectedTile] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    console.log('Current player:', currentPlayer);
+    if (currentPlayer) {
+      console.log('Current player:', currentPlayer);
+    }
   }, [currentPlayer]);
 
   // Function to handle when a tile is clicked
   const handleTileClick = (tileId) => {
     const tile = tiles.find((t) => t.id === tileId);
     setSelectedTile(tile);
-    setShowModal(true); // Open modal to display tile details
+    setShowModal(true);
   };
 
   // Function to handle closing the tile details modal
@@ -38,7 +37,6 @@ const Board = () => {
 
   // Function to handle investment actions
   const handleInvestment = (investmentType, amount) => {
-    // Deduct the investment amount from player's balance and add to portfolio
     if (playerStatus.balance >= amount) {
       addInvestment(investmentType, amount);
       updatePlayerStatus({
@@ -55,14 +53,13 @@ const Board = () => {
   return (
     <div className="board-container">
       <h2 className="board-title">Monopoly Investment Game</h2>
-      
+
       {/* Render the board tiles in a grid layout */}
       <div className="board-grid">
-        {tiles.map((tile, index) => (
+        {tiles.map((tile) => (
           <BoardTile 
             key={tile.id}
             tile={tile}
-            index={index}
             onClick={() => handleTileClick(tile.id)}
           />
         ))}
@@ -88,8 +85,8 @@ const Board = () => {
 
       {/* Player Information Display */}
       <div className="player-info">
-        <h3>Player: {currentPlayer.name}</h3>
-        <p>Current Position: {getCurrentTile()?.name || 'Starting Point'}</p>
+        <h3>Player: {currentPlayer?.name || 'Unknown Player'}</h3>
+        <p>Current Position: {getCurrentTile ? getCurrentTile()?.name || 'Starting Point' : 'N/A'}</p>
         <p>Balance: ${playerStatus.balance.toFixed(2)}</p>
         <p>Net Worth: ${playerStatus.netWorth.toFixed(2)}</p>
         <button onClick={endTurn} className="end-turn-btn">
